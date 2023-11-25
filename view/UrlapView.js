@@ -25,9 +25,9 @@ class UrlapView {
             event.preventDefault()
             this.#inputElemObjektumokLista.forEach(
                 (elem) => {
-                    console.log(elem)
+                    /* console.log(elem)
                     console.log(elem.key)
-                    console.log(elem.getValue())
+                    console.log(elem.getValue()) */
                     this.#formAdat[elem.key]=elem.getValue()
                 }
             )

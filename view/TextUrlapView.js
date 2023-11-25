@@ -1,14 +1,29 @@
 export default class TextUrlapView {
-    constructor(szuloElem,obj, key) {
-        this.szuloElem=szuloElem;
-        this.obj=obj;
-        this.key=key;
+    #value = ""
+    #valid = false
+    constructor(szuloElem, obj, key) {
+        this.szuloElem = szuloElem;
+        this.obj = obj;
+        this.key = key;
         this.textUrlapElem();
-        this.inputElem=$(`#${this.key}`)
-        
+        this.inputElem = $(`#${this.key}`)
+        this.inputElem.on("keyup", () => {
+            console.log(this.inputElem.val())
+            this.#value = this.inputElem.val()
+            //valid-e? 
+            let patternString = this.obj.pattern;//reguláris kifejezés
+            let pattern = new RegExp(patternString);//reguláris kifejezés átalakítása reguláris objektummá
+            if (pattern.test(this.#value)) {
+                this.#valid = true;
+            } else {
+                this.#valid = false;
+            }
+            console.log(this.#valid)
+        });
+
 
     }
-    getValue(){
+    getValue() {
         return this.inputElem.val()
     }
     textUrlapElem() {
