@@ -22,9 +22,16 @@ class UrlapView {
             this.#formAdat.nev=this.nevElem.val()
             this.#formAdat.szul=this.szulEvElem.val()
             console.log(this.#formAdat)
+            this.trigger("ujAdatHozzaAdasa")
         })
 
     }
+
+    trigger(esemenyNev){
+        const e=new CustomEvent(esemenyNev,{detail:this.#formAdat})
+        window.dispatchEvent(e)
+    }
+
 
     htmlOsszeallit(){
         let txt=""
